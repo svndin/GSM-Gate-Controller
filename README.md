@@ -79,6 +79,14 @@ After the Motorola Layer 1 firmware is loaded, `mobile` can be started using the
 4. Experiment with SIM/network and incoming-call event handling on a compatible, authorized network setup.
 5. Prototype isolated output control against a dummy load before any gate hardware integration.
 
+### GSM Measurement Monitor
+
+The Python monitor connects to the OsmocomBB VTY interface and collects timestamped GSM radio measurements, including ARFCN, received signal level, and raw SNR/BER values.
+
+The measurements can be exported to CSV for further analysis and visualization.
+
+See [Verification and Integration](docs/verification.md) for test results and limitations.
+
 ## Contributions
 
 Issues and pull requests are welcome, especially for reproducible ARM64 builds, version compatibility, GSM VTY parsing, test fixtures, and documentation. Include the relevant commit hashes, compiler versions, and logs (redact personal identifiers).

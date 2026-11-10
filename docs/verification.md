@@ -137,3 +137,32 @@ Suggested first test group for the Python monitor:
 - Relay/dummy-load integration test results (not attempted yet).
 
 **Privacy note:** Exact Cell Global Identities (CGI), Location Area Codes (LAC), individual ARFCNs combined with reception strengths, and raw radio logs are excluded to avoid disclosing a potentially identifying radio-location fingerprint. Keep raw evidence private and do not commit it to a public repository.
+
+
+## November 2026 – SIM and GSM Integration
+
+### Overview
+
+Extended the OsmocomBB setup on a Motorola C121 and Raspberry Pi to support SIM initialization, GSM network registration, and incoming-call detection.
+
+### Debugging and verification
+
+- Compared RX-only and TX-enabled firmware builds after observing different SIM initialization behavior.
+- Traced SIM APDU errors through the firmware and host-side L1CTL interfaces.
+- Investigated ACK handling and tested a change to SIM procedure-byte handling.
+- Successfully observed GSM network registration and incoming-call notifications with the modified TX-enabled firmware.
+- Verified two GPIO-controlled relays using 200 ms test pulses.
+- Implemented a prototype Python caller whitelist and relay-control state machine.
+
+### Current limitations
+
+- The exact contribution of the SIM driver change has not been isolated through a controlled regression test.
+- Automatic startup using systemd is not yet reliable.
+- End-to-end call-to-relay activation has not been consistently verified.
+- Physical gate operation and unattended automatic closing are outside the verified scope.
+
+### Next steps
+
+- Add automated Python tests for call-event parsing and timer behavior.
+- Improve startup sequencing and fault recovery.
+- Capture reproducible integration test results.
