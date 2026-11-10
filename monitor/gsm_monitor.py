@@ -1,4 +1,12 @@
-from os import O_SEQUENTIAL
+#!/usr/bin/env python3
+"""
+@file gsm_monitor.py
+@brief Collect GSM radio measurements from the OsmocomBB VTY.
+
+Parses MON events and stores timestamped measurements in CSV.
+"""
+
+import csv
 import re
 import telnetlib
 from datetime import datetime, timezone
@@ -6,7 +14,7 @@ from pathlib import Path
 
 HOST = "127.0.0.1"
 PORT = 4247
-OUTPUT = Path("gsm_measurements.cvs")
+OUTPUT = Path("gsm_measurements.csv")
 
 PATTERN = re.compile(
     r"% MON:\s*f=(\d+)\s+"
@@ -32,7 +40,7 @@ def main():
         tn.read_until(b"OsmocomBB(mobile)>", timeout=5)
 
         tn.write(b"enable\n")
-        tn.read_until(b"OsmocomBB(mobil)#", timeout=5)
+        tn.read_until(b"OsmocomBB(mobile)#", timeout=5)
 
         tn.write(b"monitor network 1\n")
 
@@ -41,7 +49,7 @@ def main():
 
         new_file = not OUTPUT.exists() or OUTPUT.stat().st_size == 0
 
-        with OUTPUT.open("a"), newline="" as f:
+        with OUTPUT.open("a", newline="",encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=FIELDS)
 
             if new_file:
@@ -60,7 +68,7 @@ def main():
                     if not match:
                         continue
 
-                    arfcon, level, snr, ber, cgi = match.groups()
+                    arfcn, level, snr, ber, cgi = match.groups()
 
                     row = {
                         "timestamp_utc": datetime.now(
