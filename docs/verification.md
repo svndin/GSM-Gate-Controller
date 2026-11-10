@@ -161,6 +161,23 @@ Extended the OsmocomBB setup on a Motorola C121 and Raspberry Pi to support SIM 
 - End-to-end call-to-relay activation has not been consistently verified.
 - Physical gate operation and unattended automatic closing are outside the verified scope.
 
+### SIM ACK Handling Investigation
+
+During integration testing, the TX-enabled firmware initially failed to read the SIM. Debug logs indicated a failure in the SIM ACK reception state.
+
+I investigated the issue using an existing patch from the OsmocomBB `baseband-devel` mailing list, which addresses SIM cards sending the `0x60` NULL procedure byte before an ACK.
+
+The following changes were tested in `calypso/sim.c`:
+
+```c
+sim_ignore_waiting_char = 1;  // Before receiving ACK
+sim_ignore_waiting_char = 0;  // After ACK reception
+```
+
+After rebuilding the firmware, GSM network registration and incoming-call detection were successfully observed. However, the patch's individual contribution has not yet been isolated through a controlled regression test.
+
+**Reference:** Etienne, *[patch] sim.c waiting char issue*, OsmocomBB baseband-devel mailing list, July 28, 2015. https://lists.osmocom.org/hyperkitty/list/baseband-devel@lists.osmocom.org/latest?count=100&page=5
+
 ### Next steps
 
 - Add automated Python tests for call-event parsing and timer behavior.
