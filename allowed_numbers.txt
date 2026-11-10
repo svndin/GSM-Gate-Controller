@@ -1,0 +1,4 @@
+# Allowed phone numbers in international format
+# One number per line, starting with +
+
++4917...
