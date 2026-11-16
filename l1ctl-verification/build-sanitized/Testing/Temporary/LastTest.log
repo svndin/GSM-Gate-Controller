@@ -1,0 +1,19 @@
+Start testing: Nov 07 00:46 CET
+----------------------------------------------------------
+1/1 Testing: l1ctl_pm_conf
+1/1 Test: l1ctl_pm_conf
+Command: "/home/pi/GSM-Gate-Controller/l1ctl-verification/build-sanitized/test_l1ctl_pm"
+Directory: /home/pi/GSM-Gate-Controller/l1ctl-verification/build-sanitized
+"l1ctl_pm_conf" start time: Nov 07 00:46 CET
+Output:
+----------------------------------------------------------
+PASS: 10 L1CTL PM_CONF parser checks
+<end of output>
+Test time =  13.89 sec
+----------------------------------------------------------
+Test Passed.
+"l1ctl_pm_conf" end time: Nov 07 00:47 CET
+"l1ctl_pm_conf" time elapsed: 00:00:13
+----------------------------------------------------------
+
+End testing: Nov 07 00:47 CET
