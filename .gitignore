@@ -1,0 +1,43 @@
+
+# Object files
+*.o
+*.obj
+*.lo
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Libraries
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app/
+
+# Debug symbols
+*.dSYM/
+*.pdb
+*.ilk
+
+# Compiler-generated dependency files
+*.d
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile.cmake
+CTestTestfile.cmake
+
+# Build directories
+build/
+cmake-build-*/
+out/
