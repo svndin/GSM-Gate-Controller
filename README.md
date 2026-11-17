@@ -2,6 +2,13 @@
 
 **An experimental GSM modem integration and verification project using OsmocomBB, a Motorola C121, and a Raspberry Pi.**
 
+![GSM Gate Controller hardware prototype](docs/images/hardware-prototype.jpg)
+
+*Experimental hardware prototype featuring a Motorola C121,
+Raspberry Pi, CP2102 USB-UART adapter, and a two-channel relay
+interface connected to the original gate remote.*
+
+
 The eventual application is to use authorized incoming-call events to request button presses on an existing two-button gate remote. The project currently focuses on reproducible firmware builds, GSM stack integration, passive cell measurements, and automated verification. The gate-control feature is **not yet implemented or validated**.
 
 ## Project goals
