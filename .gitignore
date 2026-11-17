@@ -39,5 +39,6 @@ CTestTestfile.cmake
 
 # Build directories
 build/
+build-sanitized/
 cmake-build-*/
 out/
